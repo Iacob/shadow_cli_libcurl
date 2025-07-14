@@ -63,6 +63,15 @@ int makeConnectCmd(server_info_t* server_info, char* to_str) {
       
       return 0;
     }
+  } else if (strcmp(server_info->type, "ss") == 0) {
+    sprintf(cmd,
+	    "%s -s %s -p %s -k %s -m %s -l %s",
+	    (strlen(CFG_SS_BIN) < 1) ? "ss-local" : CFG_TROJAN_BIN,
+	    server_info->server,
+	    server_info->port,
+	    server_info->password,
+	    server_info->cipher,
+	    listen_port);
   }
   
   return 0;
