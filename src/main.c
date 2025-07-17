@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
   // int ret = mkdir("tmp", S_IRWXU);
   mkdir("tmp", S_IRWXU);
 
-  if (strcmp(CFG_UPDATE, "yes") == 0) {
+  if (strcmp(get_config(CFG_UPDATE), "yes") == 0) {
     printf("开始同步\n");
     fetchFromUrl(serverListFileName);
   } else {

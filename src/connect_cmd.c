@@ -9,7 +9,7 @@ int makeConnectCmd(server_info_t* server_info, char* to_str) {
   char* trojanConfigFileName = "tmp/tj_config.json";
   char cmd[200];
 
-  char* listen_port = CFG_PORT;
+  char* listen_port = get_config(CFG_PORT);
   if (strlen(listen_port) < 1) {
     listen_port = "8118";
   }
@@ -56,7 +56,7 @@ int makeConnectCmd(server_info_t* server_info, char* to_str) {
       printf("配置文件保存至: %s\n", trojanConfigFileName);
 
       sprintf(cmd, "%s -c %s",
-	      (strlen(CFG_TROJAN_BIN) < 1) ? "trojan" : CFG_TROJAN_BIN,
+	      (strlen(get_config(CFG_TROJAN_BIN)) < 1) ? "trojan" : get_config(CFG_TROJAN_BIN),
 	      trojanConfigFileName);
       printf("运行命令: %s\n", cmd);
       system(cmd);
@@ -66,7 +66,7 @@ int makeConnectCmd(server_info_t* server_info, char* to_str) {
   } else if (strcmp(server_info->type, "ss") == 0) {
     sprintf(cmd,
 	    "%s -s %s -p %s -k %s -m %s -l %s",
-	    (strlen(CFG_SS_BIN) < 1) ? "ss-local" : CFG_TROJAN_BIN,
+	    (strlen(get_config(CFG_SS_BIN)) < 1) ? "ss-local" : get_config(CFG_TROJAN_BIN),
 	    server_info->server,
 	    server_info->port,
 	    server_info->password,

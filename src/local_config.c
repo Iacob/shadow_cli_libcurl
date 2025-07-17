@@ -7,6 +7,8 @@
 
 #include "shadow_cli.h"
 
+char config_values[6][200];
+
 int loadConfig(char* filename) {
   FILE *fp = fopen(filename, "r");
   int serverCnt = 0;
@@ -58,15 +60,15 @@ int loadConfig(char* filename) {
 	  strcpy(last_prop, current_val);
 	} else {
 	  if (strcmp(last_prop, "url") == 0) {
-	    strcpy(CFG_URL, current_val);
+	    strcpy(config_values[CFG_URL], current_val);
 	  } else if (strcmp(last_prop, "update") == 0) {
-	    strcpy(CFG_UPDATE, current_val);
+	    strcpy(config_values[CFG_UPDATE], current_val);
 	  } else if (strcmp(last_prop, "port") == 0) {
-	    strcpy(CFG_PORT, current_val);
+	    strcpy(config_values[CFG_PORT], current_val);
 	  } else if (strcmp(last_prop, "trojan-bin") == 0) {
-	    strcpy(CFG_TROJAN_BIN, current_val);
+	    strcpy(config_values[CFG_TROJAN_BIN], current_val);
 	  } else if (strcmp(last_prop, "ss-bin") == 0) {
-	    strcpy(CFG_SS_BIN, current_val);
+	    strcpy(config_values[CFG_SS_BIN], current_val);
 	  }
 	}
       }
@@ -85,4 +87,8 @@ int loadConfig(char* filename) {
   yaml_parser_delete(&parser);
   fclose(fp);
   return EXIT_SUCCESS;
+}
+
+char* get_config(int idx) {
+  return config_values[idx];
 }

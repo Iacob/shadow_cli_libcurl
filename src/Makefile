@@ -2,7 +2,7 @@
 CC=gcc
 
 all: main.o local_config.o fetch_from_url.o extract_server_list.o connect_cmd.o
-	$(CC) $(CCFLAGS) -lcurl -lyaml $^ -o shadow_cli
+	$(CC) $(CCFLAGS) $^ -lcurl -lyaml -o shadow_cli
 
 main.o: main.c
 	$(CC) $(CCFLAGS) -c $^ -o $@

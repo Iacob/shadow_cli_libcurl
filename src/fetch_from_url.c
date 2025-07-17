@@ -32,7 +32,7 @@ int fetchFromUrl(char* serverListFileName) {
   curl = curl_easy_init();
   if(curl) {
     // 设置目标URL
-    curl_easy_setopt(curl, CURLOPT_URL, CFG_URL);
+    curl_easy_setopt(curl, CURLOPT_URL, get_config(CFG_URL));
     
     // 设置自定义的User-Agent头
     struct curl_slist *headers = NULL;

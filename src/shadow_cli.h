@@ -17,15 +17,24 @@ struct server_info {
 
 typedef struct server_info server_info_t;
 
-char CFG_URL[200];
-char CFG_UPDATE[10];
-char CFG_PORT[10];
-char CFG_TROJAN_BIN[200];
-char CFG_SS_BIN[200];
+/* char CFG_URL[200]; */
+/* char CFG_UPDATE[10]; */
+/* char CFG_PORT[10]; */
+/* char CFG_TROJAN_BIN[200]; */
+/* char CFG_SS_BIN[200]; */
+
+#define CFG_URL 0
+#define CFG_UPDATE 1
+#define CFG_PORT 2
+#define CFG_TROJAN_BIN 3
+#define CFG_SS_BIN 4
 
 /**
  */
 int loadConfig(char* filename);
+
+char* get_config(int idx);
+
 /**
  *
  */
