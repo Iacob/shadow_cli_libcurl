@@ -21,3 +21,4 @@ connect_cmd.o: connect_cmd.c
 
 clean:
 	rm -rf *.o
+	rm -f shadow_cli

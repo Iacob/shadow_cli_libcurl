@@ -36,7 +36,7 @@ int fetchFromUrl(char* serverListFileName) {
     
     // 设置自定义的User-Agent头
     struct curl_slist *headers = NULL;
-    headers = curl_slist_append(headers, "User-Agent: clash");
+    headers = curl_slist_append(headers, "User-Agent: clash-verge");
     curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
 
     // 设置回调函数以处理响应数据
