@@ -72,6 +72,8 @@ int makeConnectCmd(server_info_t* server_info, char* to_str) {
 	    server_info->password,
 	    server_info->cipher,
 	    listen_port);
+    printf("执行命令: %s\n", cmd);
+    system(cmd);
   }
   
   return 0;
