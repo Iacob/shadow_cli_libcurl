@@ -56,9 +56,13 @@ int extractServerList(char* filename, server_info_t* serverList) {
       }
       break;
     case YAML_SEQUENCE_START_EVENT:
+      depth++;
       break;
     case YAML_SEQUENCE_END_EVENT:
-      in_proxies_list = 0;
+      depth--;
+      if (depth == 1) { // proxies列表结束
+	in_proxies_list = 0;
+      }
       break;
     case YAML_SCALAR_EVENT:
       //printf("--%s-- depth: %d in_mapping: %d\n", event.data.scalar.value, depth, in_mapping);
