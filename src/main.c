@@ -12,7 +12,7 @@
 int main(int argc, char** argv) {
   char* configFileName = "config.yml";
   char* serverListFileName = "tmp/server_list.yml";
-  server_info_t* selectedServer;
+  server_info_t* selectedServer = NULL;
 
   server_info_t serverList[200];
   int server_cnt = 200;
