@@ -74,6 +74,16 @@ int makeConnectCmd(server_info_t* server_info, char* to_str) {
 	    listen_port);
     printf("执行命令: %s\n", cmd);
     system(cmd);
+  } else if (strcmp(server_info->type, "anytls") == 0) {
+    sprintf(cmd,
+	    "anytls -s %s:%s -p %s -l localhost:%s -sni %s",
+	    server_info->server,
+	    server_info->port,
+	    server_info->password,
+	    listen_port,
+	    server_info->sni);
+    printf("执行命令: %s\n", cmd);
+    system(cmd);
   }
   
   return 0;
